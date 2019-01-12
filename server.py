@@ -1,8 +1,13 @@
-from bottle import route, run, view
+from bottle import route, run, view, static_file
 from datetime import datetime as dt
 from random import random
 from horoscope import generate_prophecies
 import os
+
+# фишка из 6го модуля чтобы шаблон видел файлы js и css
+@route("/static/<filename:path>")
+def send_static(filename):
+    return static_file(filename, root="static")
 
 shablon = os.getcwd() + os.sep + 'views' + os.sep + 'shablon1.tpl'
 @route("/")
