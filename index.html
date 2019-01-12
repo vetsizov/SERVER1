@@ -12,12 +12,18 @@
   />
   
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-  
+
+  <script type="text/javascript" src="vito.js"></script>
+
+  <style type="text/css">
+    .col:hover { background-color: lightgreen }
+  </style>
+
 </head>
   
 <body>
   <div class="container">
-    <h1 onclick="Hclick1()" id="zagolovok">Что день грядущий мне готовит?</h1>
+    <h1 onclick="Hclick1()" id="zagolovok">Что день грядущий мне готовит</h1>
 
     <div class="row">
       <div class="col" id="p-0">
@@ -39,25 +45,20 @@
 
 
 </body>
-
-  <script type="text/javascript">
+<script type="text/javascript">
     function Hclick1()
     {
-      console.log('Шлепнули по заголовку! Функция из html')
-      
       p_url = "http://sf-pyw.mosyag.in/m04/api/forecasts"
+      console.log('Шлепнули по заголовку! Функция из html')
       $.getJSON(p_url, function(data)
       {
         console.log(data)
-
         $.each(data["prophecies"], function(i, d) 
         {
           $("#p-" + i).html("<p>" + d + "</p>")
         })
-      
       })
     }
-  </script>
-
+</script>
 
 </html>
